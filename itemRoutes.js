@@ -15,6 +15,7 @@ router.get("/", function (req, resp) {
   return resp.send(db.items);
 });
 
+//CR: try out .find method
 /** return single item */
 router.get("/:name", function (req, resp) {
   let itemNameValue = req.params.name;
@@ -27,7 +28,7 @@ router.get("/:name", function (req, resp) {
     `It's a bad request, ${itemNameValue} is not in the list!`);
 });
 
-
+//CR: destructure the body and re-add name & price
 /** accept JSON body, add item, and return it ==>
  * {name: "popsicle", price: 1.45} =>
  * {added: {name: "popsicle", price: 1.45}}

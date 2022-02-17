@@ -48,6 +48,12 @@ describe("GET /items/:name", function () {
 
         expect(resp.body).toEqual({ name: "popsicle", price: 1.45 });
     });
+    //CR: fail condition tests are important too!
+    it("Fails to get a specific item", async function () {
+        const resp = await request(app).get("/items/pizza");
+
+        expect(resp.body).toEqual({ name: "popsicle", price: 1.45 });
+    });
 });
 
 /** Updates a specific item */
