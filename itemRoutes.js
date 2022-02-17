@@ -15,12 +15,27 @@ router.get("/", function (req, resp) {
   return resp.send(db.items);
 });
 
-
-/** accept JSON body, add item, and return it */
-router.get("/:name");
-
 /** return single item */
-router.post("/");
+router.get("/:name", function(req, resp) {
+  let itemNameValue = req.params.name;
+  for(let item of db.items){
+    if(item.name === itemNameValue) {
+      return resp.send(item);
+    }
+  }
+});
+
+
+/** accept JSON body, add item, and return it ==>
+ * {name: "popsicle", price: 1.45} =>
+  {added: {name: "popsicle", price: 1.45}}
+*/
+router.post("/", function(req, resp){
+  db.items.push(req.body);
+  return resp.send({
+    added: req.body,
+  });
+} );
 
 /** accept JSON body, modify item, return it */
 router.patch("/:name");
