@@ -30,7 +30,7 @@ router.get("/:name", function (req, resp) {
 
 /** accept JSON body, add item, and return it ==>
  * {name: "popsicle", price: 1.45} =>
-  {added: {name: "popsicle", price: 1.45}}
+ * {added: {name: "popsicle", price: 1.45}}
 */
 router.post("/", function (req, resp) {
   db.items.push(req.body);
@@ -65,8 +65,8 @@ router.delete("/:name", function (req, resp) {
   for (let item of db.items) {
     if (item.name === itemNameValue) {
       const itemIndex = db.items.indexOf(item);
-      db.items.splice(itemIndex,1);
-      return resp.send({message: "Deleted"});
+      db.items.splice(itemIndex, 1);
+      return resp.send({ message: "Deleted" });
     }
   }
   throw new BadRequestError(

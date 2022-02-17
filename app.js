@@ -9,6 +9,7 @@ const { NotFoundError } = require("./expressError");
 // Get a middleware function and register it for all routes
 app.use(express.json());
 
+// Generic route for ALL items routes
 app.use("/items", itemRoutes);
 
 
